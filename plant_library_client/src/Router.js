@@ -1,8 +1,8 @@
 import React from 'react'
 import { Switch, Route } from 'react-router-dom'
 
-import Home from '../components/Home'
-import PlantsList from './PlantsList'
+import Home from './Home'
+import PlantsList from './components/plants/PlantsList'
 
 const Router = () => {
     return (

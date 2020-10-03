@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { addPlant } from '../actions/plantsActions'
+import { addPlant } from '../../actions/plantsActions'
 
 class PlantsForm extends Component{
 

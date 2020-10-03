@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { fetchPlants } from '../actions/plantsActions'
-import PlantsForm from './PlantsForm'
-import PlantsList from './PlantsList'
+import PlantsForm from '../components/plants/PlantsForm'
+
 class PlantsContainer extends Component{
 
     componentDidMount(){
