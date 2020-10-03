@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Plant.create(
+    name: "Aloe Vera", 
+    species: "Aloe barbadensis miller", 
+    benefit: "Heals wounds", 
+    care: "Aloe vera plants need to be deeply watered and their soil left to dry just slightly (about 1 to 2 inches deep) between watering. They do very well with lots of sun but can turn brown if they get too much of it, so keeping your aloe vera plant under indirect sunlight is best.", 
+    difficulty: "Moderate",
+    image: "https://unsplash.com/photos/T0inbt7nRME"
+)
