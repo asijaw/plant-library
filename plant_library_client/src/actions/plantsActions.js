@@ -17,3 +17,9 @@ export const addPlant = plant => {
         .then(plant => dispatch({ type: 'ADD_PLANT', payload: plant }))
     }
 }
+
+export const addProgress = note => {
+    return (dispatch) => {
+        dispatch({type: 'ADD_PROGRESS', payload: note})
+    }
+}

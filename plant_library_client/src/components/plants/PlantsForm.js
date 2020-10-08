@@ -6,7 +6,6 @@ class PlantsForm extends Component{
 
     state = {
         name: '',
-        species: '',
         benefits: '',
         care: '',
         difficulty: '',
@@ -31,9 +30,9 @@ class PlantsForm extends Component{
                 <label>Name:</label>
                 <input type="text" value={this.state.name} name="name" onChange={this.handleChange} />
                 <br/> 
-                <label>Species:</label>
+                {/* <label>Species:</label>
                 <input type="text" value={this.state.species} name="species" onChange={this.handleChange} />
-                <br/> 
+                <br/>  */}
                 <label>Benefits:</label>
                 <input type="text" value={this.state.benefits} name="benefits" onChange={this.handleChange} />
                 <br/> 

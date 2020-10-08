@@ -1,9 +1,10 @@
 import React from 'react'
+import PlantList from './components/plants/PlantsList'
 
 const Home = () => {
     return (
         <div>
-            Home Page
+            <PlantList />
         </div>
     )
 }

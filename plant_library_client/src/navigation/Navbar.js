@@ -1,10 +1,29 @@
 import React from 'react';
-import NavLink from './NavLink';
 
-const navLinks = ['Home', 'Plants'];
+import { NavLink } from 'react-router-dom'
 
-const Navbar = () => {
-  return navLinks.map((link) => <NavLink link={link} />);
+const NavBar = () => {
+   
+    return (
+        <>
+                <NavLink  exact activeStyle={{ color: 'blue'}} to='/'>
+                    Home
+                </NavLink> | 
+
+                <NavLink exact activeStyle={{ color: 'blue'}} to='/about'>
+                    About
+                </NavLink> | 
+
+                <NavLink exact activeStyle={{ color: 'blue'}} to='/plants'>
+                    Plants
+                </NavLink> |        
+
+                <NavLink exact activeStyle={{ color: 'blue'}} to='/new'>
+                    New
+                </NavLink> |  
+                
+        </>
+    );
 };
 
-export default Navbar;
+export default NavBar;

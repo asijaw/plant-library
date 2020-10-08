@@ -4,20 +4,11 @@ import PlantCard from './PlantCard'
 
 const PlantsList = ({ plants }) => {
     return (
-        <div style={{
-                display: 'grid',
-                gridTemplateColumns: '1fr 1fr',
-                gridGap: '10px',
-            }}
-        >
+       <div >
             {plants.map(plant => (
                 <PlantCard key={plant.id} plant={plant} />
             ))}
-                {/* <ul>
-                    <li key={plant.id}>
-                        {plant.name}
-                    </li>
-                </ul>)} */}
+                
         </div>
     )
 }

@@ -1,16 +1,21 @@
-import React from 'react'
-import Router from './Router'
+import React, { Component } from 'react'
+
 import PlantsContainer from './containers/PlantsContainer'
 import Navbar from './navigation/Navbar';
 
-const App = () => {
-    return (
-        <div>
-            <Navbar />
-            <PlantsContainer />
-            <Router />
-        </div>
-    )
+
+class App extends Component {
+
+    render() {
+        return (
+            <>  
+                <Navbar />
+                <PlantsContainer />
+            </>
+            
+        );
+    }
 }
+
 
 export default App
