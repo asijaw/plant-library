@@ -18,8 +18,15 @@ export const addPlant = plant => {
     }
 }
 
-export const addProgress = note => {
-    return (dispatch) => {
-        dispatch({type: 'ADD_PROGRESS', payload: note})
+export const deletePlant = (id) => {
+    return(dispatch) => {
+      fetch(`http://localhost:3000/plants/${id}`, {
+        method: 'DELETE',
+        headers: { 'Content-type': 'application/json' } 
+      })
+        .then( resp => resp.json())
+        .then( plant => dispatch({type: "DELETE_PLANT", plant}))
     }
-}
+  }
+  
+

@@ -5,13 +5,13 @@ import Home from '../Home'
 import CreatePlant from '../CreatePlant'
 import About from '../About'
 
-const Router = () => {
+const Router = (props) => {
     return (
         <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/new' component={CreatePlant} />
             <Route path='/about' component={About} />
-            
+
         </Switch>
     )
 }

@@ -15,6 +15,7 @@ class ProgressNotesController < ApplicationController
 
   # POST /progress_notes
   def create
+    
     @progress_note = ProgressNote.new(progress_note_params)
 
     if @progress_note.save
@@ -46,6 +47,6 @@ class ProgressNotesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def progress_note_params
-      params.require(:progress_note).permit(:text)
+      params.permit(:text, :plant_id)
     end
 end

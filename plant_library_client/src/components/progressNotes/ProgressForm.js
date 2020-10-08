@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { addNote } from '../../actions/progressNotesActions'
+import { connect } from 'react-redux'
 
 class ProgressForm extends Component {
 
@@ -6,24 +8,26 @@ state = {
     text: ''
 }
 
-  handleOnChange(event) {
+  handleOnChange = (event) =>{
     this.setState({
       text: event.target.value,
     });
   }
 
-  handleOnSubmit(event) {
+  handleOnSubmit = (event) => {
+
     event.preventDefault();
-    this.props.addProgress({text: this.state.text, plantId: this.props.plantId });
+    this.props.addNote({text: this.state.text, plant_id: this.props.plantId });
     this.setState({
       text: '',
     });
   }
 
   render() {
+    //console.log(this.state.text)
     return (
       <div>
-        <form onSubmit={(event) => this.handleOnSubmit(event)}>
+        <form onSubmit={this.handleOnSubmit}>
         <label>Add Progress Note</label>
           <input
             type="text"
@@ -36,4 +40,4 @@ state = {
   }
 };
 
-export default ProgressForm;
+export default connect(null, { addNote })(ProgressForm);

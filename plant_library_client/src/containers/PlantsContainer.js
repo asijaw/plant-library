@@ -8,6 +8,7 @@ import { Route, Switch } from 'react-router-dom'
 
 class PlantsContainer extends Component{
     
+    
     componentDidMount(){
         this.props.fetchPlants()
     }

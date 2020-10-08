@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import { addPlant } from '../../actions/plantsActions'
 
@@ -6,10 +7,10 @@ class PlantsForm extends Component{
 
     state = {
         name: '',
-        benefits: '',
+        benefit: '',
         care: '',
-        difficulty: '',
-        image: ''
+        image: '',
+        progress_notes: []
     }
 
     handleChange = (e) => {
@@ -19,36 +20,46 @@ class PlantsForm extends Component{
         })
     }
 
+    handleNotes = (e) => {
+        const {name, value} = e.target
+        this.setState({
+            [name]: this.state.progress_notes.push(value)
+          })
+        console.log(this.state.progress_notes)
+    }
+
     handleSubmit = (e) => {
         e.preventDefault()
         this.props.addPlant(this.state)
+        this.props.history.push("/")
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <label>Name:</label>
+            <div style={{textAlign:'center', justifyContent:'center', alignItems:'center', height: '100vh'}}>
+                <h1>Add a New Plant to the Collection!!</h1>
+            <form onSubmit={this.handleSubmit} style={{  justifyContent:'center', alignItems:'center', height: '100vh'}}>
+                <label><strong>Name: </strong></label>
                 <input type="text" value={this.state.name} name="name" onChange={this.handleChange} />
                 <br/> 
-                {/* <label>Species:</label>
-                <input type="text" value={this.state.species} name="species" onChange={this.handleChange} />
-                <br/>  */}
-                <label>Benefits:</label>
-                <input type="text" value={this.state.benefits} name="benefits" onChange={this.handleChange} />
+                <label><strong>Benefits:</strong></label>
+                <input type="text" value={this.state.benefit} name="benefit" onChange={this.handleChange} />
                 <br/> 
-                <label>Care:</label>
+                <label><strong>Care:</strong></label>
                 <input type="text" value={this.state.care} name="care" onChange={this.handleChange} />
                 <br/> 
-                <label>Difficulty:</label>
-                <input type="text" value={this.state.difficulty} name="difficulty" onChange={this.handleChange} />
-                <br/> 
-                <label>Image:</label>
+                <label><strong>Image:</strong></label>
                 <input type="text" value={this.state.image} name="image" onChange={this.handleChange} />
+                <br/> 
+                {/* <label><strong>Progress Note:</strong></label>
+                <input type="text" value={this.state.progress_notes} name="progress_notes" onChange={this.handleNotes} /> */}
                 <br/> 
                 <input type="submit" value="Add Plant" />
             </form>
+            </div>
         )
     }
 }
 
-export default connect(null, { addPlant })(PlantsForm)
+export default withRouter(connect(null, { addPlant })(PlantsForm)
+)

@@ -1,35 +1,46 @@
-import React from 'react'
+import React, { Component }from 'react'
 import { Card } from 'react-bootstrap'
+import { connect } from 'react-redux'
+import {deletePlant} from '../../actions/plantsActions'
 import moment from 'moment'
-import ProgressForm from '../progressNotes/ProgressForm'
+import ProgressNotesContainers from '../../containers/ProgressNotesContainers'
 
 
-const PlantShow = ( {plants , match} ) => {
-    if (plants.length === 0) return null;
-    const plant = plants.find((plant) => plant.id === parseInt(match.params.plantId));
-    console.log(plant)
+class PlantShow extends Component {
     
-    return (
-        <div>
+    handleOnClick(id) {
+        this.props.deletePlant(id);
+    }
+    render() {
+        const {plants , match} = this.props
+        if (plants.length === 0) return null;
+        const plant = plants.find((plant) => plant.id === parseInt(match.params.plantId));
+    
+        return (
             <Card style={cardStyle}>
                 <Card.Body>
                     <Card.Img src={plant.image} style={imageStyle} alt={plant.name}/>
                     <Card.Title><h1>{plant.name}</h1></Card.Title>
-                    <Card.Text>
-                        <h3>Benefits:</h3> {plant.benefit}
-                        <h3>Care Instructions:</h3>{plant.care} 
-                        <h3>Progress Notes:</h3> 
-                        {plant.progress_notes.map(note => <p>{moment(note.created_at).format("MMM Do YYYY")} - {note.text}</p>)}
-                        <ProgressForm />
-                    </Card.Text>
+                    <Card.Body>
+                        <strong>Benefits: </strong> {plant.benefit} <br/>
+                        <strong>Care Instructions: </strong>{plant.care} 
+                        <br/>
+                        <strong>Progress Notes:</strong><br/>
+                        {plant.progress_notes ? 
+                            plant.progress_notes.map(note => <p key={note.id}><strong>{moment(note.created_at).format("MMM Do YYYY")}</strong> - {note.text}</p>) :
+                            plant.progress_notes = []}
+                        <br/>
+                        <ProgressNotesContainers plant={plant}/>
+                        <button onClick={() => this.handleOnClick(plant.id)}> Delete Plant</button>
+                    </Card.Body>
                 </Card.Body>
             </Card>
-            
-        </div>
-    )
+                
+        )
+    }
 }
 
-export default PlantShow
+export default connect(null, {deletePlant})(PlantShow)
 
 const cardStyle = {
     border: 'solid',
