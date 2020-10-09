@@ -5,10 +5,7 @@ export const plantReducer = (state = [], action) => {
         case 'ADD_PLANT':
             return [...state, action.payload]
         case 'DELETE_PLANT':
-            return {
-                ...state,
-                plant: state.plants.find( plant => plant.id !== action.payload.id)
-            }
+            return state.map(plant => plant.id !== action.plant.id)
 
         case 'ADD_NOTE':
             

@@ -18,14 +18,14 @@ export const addPlant = plant => {
     }
 }
 
-export const deletePlant = (id) => {
+export const deletePlant = (plant) => {
     return(dispatch) => {
-      fetch(`http://localhost:3000/plants/${id}`, {
-        method: 'DELETE',
-        headers: { 'Content-type': 'application/json' } 
+        dispatch({type: "DELETE_PLANT", plant})
+      fetch(`http://localhost:3000/plants/${plant.id}`, {
+        method: 'DELETE'
+        
       })
-        .then( resp => resp.json())
-        .then( plant => dispatch({type: "DELETE_PLANT", plant}))
+    window.location.href = "http://localhost:3001/plants/"
     }
   }
   

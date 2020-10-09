@@ -31,7 +31,7 @@ class PlantShow extends Component {
                             plant.progress_notes = []}
                         <br/>
                         <ProgressNotesContainers plant={plant}/>
-                        <button onClick={() => this.handleOnClick(plant.id)}> Delete Plant</button>
+                        <button onClick={() => this.handleOnClick(plant)}> Delete Plant</button>
                     </Card.Body>
                 </Card.Body>
             </Card>
