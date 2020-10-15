@@ -2,21 +2,36 @@ import React from 'react'
 import { Card } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
-const PlantCard = ({ plant }) => {
+class PlantCard extends React.Component {
 
-    return (
-        
-        <Link to={`/plants/${plant.id}`}>
-            <Card style={cardStyle}>
-                <Card.Body>
-                    <Card.Img src={plant.image} style={imageStyle} alt={plant.name}/>
-                    <Card.Title>{plant.name}</Card.Title>
-                </Card.Body>
-            </Card>
+   state = {
+       num : 0
+   }
 
-        </Link>
+    handleOnClick = (e) => {
+        e.stopPropagation()
+        this.setState((state) => ({
+            num: state.num + 1
+        }));
+    }
 
-    )
+    render () {
+
+        return (
+            
+            <Link to={`/plants/${this.props.plant.id}`}>
+                <Card style={cardStyle}>
+                    <Card.Body>
+                        <Card.Img src={this.props.plant.image} style={imageStyle} alt={this.props.plant.name}/>
+                        <Card.Title>{this.props.plant.name}</Card.Title>
+                        <button onClick={this.handleOnClick}> Like {this.state.num} </button>
+                    </Card.Body>
+                </Card>
+
+            </Link>
+
+        )
+    }
 }
 export default PlantCard
 

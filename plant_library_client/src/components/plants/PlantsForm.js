@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { withRouter } from 'react-router'
 import { connect } from 'react-redux'
 import { addPlant } from '../../actions/plantsActions'
 
@@ -20,13 +19,13 @@ class PlantsForm extends Component{
         })
     }
 
-    handleNotes = (e) => {
-        const {name, value} = e.target
-        this.setState({
-            [name]: this.state.progress_notes.push(value)
-          })
-        console.log(this.state.progress_notes)
-    }
+    // handleNotes = (e) => {
+    //     const {name, value} = e.target
+    //     this.setState({
+    //         [name]: this.state.progress_notes.push(value)
+    //       })
+    //     console.log(this.state.progress_notes)
+    // }
 
     handleSubmit = (e) => {
         e.preventDefault()
@@ -61,5 +60,4 @@ class PlantsForm extends Component{
     }
 }
 
-export default withRouter(connect(null, { addPlant })(PlantsForm)
-)
+export default connect(null, { addPlant })(PlantsForm)

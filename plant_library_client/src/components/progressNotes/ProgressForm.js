@@ -17,7 +17,9 @@ state = {
   handleOnSubmit = (event) => {
 
     event.preventDefault();
+    console.log("a")
     this.props.addNote({text: this.state.text, plant_id: this.props.plantId });
+    console.log("b")
     this.setState({
       text: '',
     });
